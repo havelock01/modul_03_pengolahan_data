@@ -2,11 +2,35 @@ import 'dart:js';
 
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   String username = "";
   String password = "";
+  bool isLoginSuccess = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Login Page"),
+        ),
+        body: Column(
+          children: [
+            _usernameField(),
+            _passwordField(),
+            _loginButton(context),
+          ],
+        ),
+      ),
+    );
+  }
 
   Widget _usernameField() {
     return Container(
@@ -67,24 +91,6 @@ class LoginPage extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
         child: Text('Login'),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Login Page"),
-        ),
-        body: Column(
-          children: [
-            _usernameField(),
-            _passwordField(),
-            _loginButton(context),
-          ],
-        ),
       ),
     );
   }
