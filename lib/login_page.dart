@@ -86,13 +86,25 @@ class _LoginPageState extends State<LoginPage> {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       width: MediaQuery.of(context).size.width,
       child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: (isLoginSuccess) ? Colors.blue : Colors.red, //background
+          onPrimary: Colors.white,
+        ),
         onPressed: () {
           String text = "";
           if (username == "havelock" && password == "rizqi123") {
-            text = "Login Success";
+            setState(() {
+              text = "Login Success";
+              isLoginSuccess = true;
+            });
           } else {
-            text = "Login Failed";
+            setState(() {
+              text = "Login Failed";
+              isLoginSuccess = false;
+            });
           }
+
+          print("isLoginSuccess : $isLoginSuccess");
 
           SnackBar snackBar = SnackBar(content: Text(text));
 
