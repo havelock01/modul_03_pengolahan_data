@@ -45,6 +45,11 @@ class _LoginPageState extends State<LoginPage> {
             borderRadius: BorderRadius.all(Radius.circular(8.0)),
             borderSide: BorderSide(color: Colors.black),
           ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            borderSide:
+                BorderSide(color: (isLoginSuccess) ? Colors.blue : Colors.red),
+          ),
         ),
       ),
     );
